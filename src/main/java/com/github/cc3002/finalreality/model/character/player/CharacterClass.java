@@ -6,6 +6,7 @@ package com.github.cc3002.finalreality.model.character.player;
  * @author Ignacio Slater Muñoz.
  * @author <Your name>
  */
+
 public enum CharacterClass {
   KNIGHT, ENGINEER, THIEF, BLACK_MAGE, WHITE_MAGE
 }

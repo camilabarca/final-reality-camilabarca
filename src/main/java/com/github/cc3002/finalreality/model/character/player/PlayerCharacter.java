@@ -25,12 +25,15 @@ public class PlayerCharacter extends AbstractCharacter {
    *
    * @param name
    *     the character's name
+   * @param points
+   *
+   * @param defense
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    * @param characterClass
    *     the class of this character
    */
-  public PlayerCharacter(@NotNull String name, String points, String defense,
+  public PlayerCharacter(@NotNull String name, int points, String defense,
       @NotNull BlockingQueue<ICharacter> turnsQueue,
       final CharacterClass characterClass) {
     super(turnsQueue, name, points, defense);

@@ -6,7 +6,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import org.jetbrains.annotations.NotNull;
-
 /**
  * A class that holds all the information of a single enemy of the game.
  *
@@ -22,7 +21,7 @@ public class Enemy extends AbstractCharacter {
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
-  public Enemy(@NotNull final String name, final String points, final String defense, final int weight, final int damage,
+  public Enemy(@NotNull final String name, final int points, final String defense, final int weight, final int damage,
       @NotNull final BlockingQueue<ICharacter> turnsQueue) {
     super(turnsQueue, name, points, defense);
     this.weight = weight;

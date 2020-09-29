@@ -36,7 +36,6 @@ public abstract class AbstractCharacter implements ICharacter {
     scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
 
   }
-
   /**
    * Adds this character to the turns queue.
    */
