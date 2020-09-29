@@ -18,23 +18,16 @@ public interface ICharacter {
    */
   void waitTurn();
 
+  void addToQueue();
+
   /**
    * Returns this character's name.
    */
   String getName();
 
-  /**
-   * Equips a weapon to the character.
-   */
-  void equip(Weapon weapon);
+  int getPoints();
 
-  /**
-   * Return this character's equipped weapon.
-   */
-  Weapon getEquippedWeapon();
+  String getDefense();
 
-  /**
-   * Returns this character's class.
-   */
-  CharacterClass getCharacterClass();
+
 }
