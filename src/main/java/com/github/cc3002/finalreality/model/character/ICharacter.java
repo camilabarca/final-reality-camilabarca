@@ -28,5 +28,5 @@ public interface ICharacter {
   int getPoints();
 
   String getDefense();
-  
+
 }
