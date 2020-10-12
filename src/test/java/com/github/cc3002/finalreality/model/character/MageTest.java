@@ -1,16 +1,16 @@
 package com.github.cc3002.finalreality.model.character;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import com.github.cc3002.finalreality.model.character.player.*;
-
-import java.util.EnumMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+/**
+ * Set of tests for the {@code Mage} class.
+ *
+ * @author Camila Labarca
+ * @see Mage
+ */
 
 public class MageTest extends AbstractPlayerCharacterTest {
     private static final String BLACK_MAGE_NAME = "Vivi";

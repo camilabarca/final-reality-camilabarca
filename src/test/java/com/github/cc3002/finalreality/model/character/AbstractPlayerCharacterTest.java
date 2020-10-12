@@ -1,30 +1,26 @@
 package com.github.cc3002.finalreality.model.character;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
-import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 import com.github.cc3002.finalreality.model.weapon.Weapon;
 import com.github.cc3002.finalreality.model.weapon.WeaponType;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Set of tests for the {@code GameCharacter} class.
+ * Abstract class containing the common tests for all the types of player characters.
  *
  * @author Ignacio Slater Muñoz.
- * @author <Your name>
- * @see PlayerCharacter
+ * @author Camila Labarca
+ * @see IPlayerCharacter
  */
+
 public abstract class AbstractPlayerCharacterTest extends AbstractCharacterTest {
   protected List<IPlayerCharacter> testPlayerCharacters;
   protected Weapon testWeapon;
@@ -36,6 +32,9 @@ public abstract class AbstractPlayerCharacterTest extends AbstractCharacterTest 
     super.waitTurnTest();
   }
 
+  /**
+   * Checks that the character equips correctly.
+   */
   @Test
   void equipWeaponTest() {
     for (var character :

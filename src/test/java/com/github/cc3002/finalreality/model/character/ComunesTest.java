@@ -1,12 +1,15 @@
 package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+/**
+ * Set of tests for the {@code Comunes} class.
+ *
+ * @author Camila Labarca
+ * @see Comunes
+ */
 
 public class ComunesTest extends AbstractPlayerCharacterTest {
     private static final String KNIGHT_NAME = "Adelbert";
