@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
  * A class that holds all the information of a single enemy of the game.
  *
  * @author Ignacio Slater Muñoz
- * @author <Your name>
+ * @author Camila Labarca
  */
 public class Enemy extends AbstractCharacter {
 
@@ -17,8 +17,8 @@ public class Enemy extends AbstractCharacter {
   private final int damage;
 
   /**
-   * Creates a new enemy with a name, a weight and the queue with the characters ready to
-   * play.
+   * Creates a new enemy with a name, points, defense, a weight, damage and the queue
+   * with the characters ready to play.
    */
   public Enemy(@NotNull final String name, final int points, final int defense, final int weight, final int damage,
       @NotNull final BlockingQueue<ICharacter> turnsQueue) {
@@ -34,6 +34,9 @@ public class Enemy extends AbstractCharacter {
     return weight;
   }
 
+  /**
+   * Returns the damage of this enemy.
+   */
   public int getDamage() {
     return damage;
   }

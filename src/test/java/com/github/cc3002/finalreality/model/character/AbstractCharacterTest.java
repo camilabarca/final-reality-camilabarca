@@ -21,7 +21,6 @@ public abstract class AbstractCharacterTest {
 
   protected BlockingQueue<ICharacter> turns;
   protected List<ICharacter> testCharacters;
-  /*protected Weapon testWeapon;*/
 
   /**
    * Checks that the character waits the appropriate amount of time for it's turn.

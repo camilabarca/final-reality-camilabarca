@@ -53,7 +53,7 @@ public abstract class AbstractPlayerCharacterTest extends AbstractCharacterTest 
 
   protected void basicSetUp() {
     super.basicSetUp();
-    testWeapon = new Weapon("Test", 15, 0,10, WeaponType.AXE);
+    testWeapon = new Weapon("Test", 15,10, WeaponType.AXE);
     testPlayerCharacters = new ArrayList<>();
 
   }

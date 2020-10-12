@@ -23,20 +23,20 @@ class WeaponTest {
 
   @BeforeEach
   void setUp() {
-    testAxe = new Weapon(AXE_NAME, DAMAGE, 0,SPEED, WeaponType.AXE);
-    testStaff = new Weapon(STAFF_NAME, DAMAGE,0, SPEED, WeaponType.STAFF);
-    testSword = new Weapon(SWORD_NAME, DAMAGE, 0,SPEED, WeaponType.SWORD);
-    testBow = new Weapon(BOW_NAME, DAMAGE,10, SPEED, WeaponType.BOW);
-    testKnife = new Weapon(KNIFE_NAME, DAMAGE,0, SPEED, WeaponType.KNIFE);
+    testAxe = new Weapon(AXE_NAME, DAMAGE, SPEED, WeaponType.AXE);
+    testStaff = new Weapon(STAFF_NAME, DAMAGE, SPEED, WeaponType.STAFF);
+    testSword = new Weapon(SWORD_NAME, DAMAGE, SPEED, WeaponType.SWORD);
+    testBow = new Weapon(BOW_NAME, DAMAGE, SPEED, WeaponType.BOW);
+    testKnife = new Weapon(KNIFE_NAME, DAMAGE, SPEED, WeaponType.KNIFE);
   }
 
   @Test
   void constructorTest() {
-    var expectedAxe = new Weapon(AXE_NAME, DAMAGE,0, SPEED, WeaponType.AXE);
-    var expectedStaff = new Weapon(STAFF_NAME, DAMAGE, 0, SPEED, WeaponType.STAFF);
-    var expectedSword = new Weapon(SWORD_NAME, DAMAGE, 0,SPEED, WeaponType.SWORD);
-    var expectedBow = new Weapon(BOW_NAME, DAMAGE,10, SPEED, WeaponType.BOW);
-    var expectedKnife = new Weapon(KNIFE_NAME, DAMAGE, 0,SPEED, WeaponType.KNIFE);
+    var expectedAxe = new Weapon(AXE_NAME, DAMAGE, SPEED, WeaponType.AXE);
+    var expectedStaff = new Weapon(STAFF_NAME, DAMAGE, SPEED, WeaponType.STAFF);
+    var expectedSword = new Weapon(SWORD_NAME, DAMAGE,SPEED, WeaponType.SWORD);
+    var expectedBow = new Weapon(BOW_NAME, DAMAGE, SPEED, WeaponType.BOW);
+    var expectedKnife = new Weapon(KNIFE_NAME, DAMAGE,SPEED, WeaponType.KNIFE);
 
     assertEquals(expectedAxe, testAxe);
     assertEquals(expectedAxe.hashCode(), testAxe.hashCode());

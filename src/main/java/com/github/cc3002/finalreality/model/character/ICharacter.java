@@ -6,7 +6,7 @@ package com.github.cc3002.finalreality.model.character;
  * A character can be controlled by the player or by the CPU (an enemy).
  *
  * @author Ignacio Slater Muñoz.
- * @author <Your name>
+ * @author Camila Labarca
  */
 public interface ICharacter {
 
@@ -16,6 +16,9 @@ public interface ICharacter {
    */
   void waitTurn();
 
+  /**
+   * Adds a character to the list {@code turnsQueue}.
+   */
   void addToQueue();
 
   /**
@@ -23,8 +26,14 @@ public interface ICharacter {
    */
   String getName();
 
+  /**
+   * Returns this character's points.
+   */
   int getPoints();
 
+  /**
+   * Returns this character defense.
+   */
   int getDefense();
 
 }

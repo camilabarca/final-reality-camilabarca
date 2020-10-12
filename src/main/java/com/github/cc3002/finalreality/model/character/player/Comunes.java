@@ -7,13 +7,32 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 public class Comunes extends PlayerCharacter{
+
     private final ComunesType type;
+
+    /**
+     * Creates a new common character.
+     *
+     * @param name
+     *     the common character's name
+     * @param points
+     *    the common character's points
+     * @param defense
+     *     the common character's defense
+     * @param type
+     *     the common character's type
+     * @param turnsQueue
+     *     the queue with the characters waiting for their turn
+     */
 
     public Comunes(String name, int points, int defense, ComunesType type, @NotNull BlockingQueue<ICharacter> turnsQueue){
         super(name, points, defense, turnsQueue);
         this.type = type;
     }
 
+    /**
+     * Returns the type of this common character.
+     */
     public ComunesType getComunesType(){
         return type;
     }

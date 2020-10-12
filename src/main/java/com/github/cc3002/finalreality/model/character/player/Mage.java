@@ -8,8 +8,26 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 public class Mage extends PlayerCharacter{
+
     private final MageType type;
     private final int mana;
+
+    /**
+     * Creates a new mage character.
+     *
+     * @param name
+     *     the mage character's name
+     * @param points
+     *    the mage character's points
+     * @param defense
+     *     the mage character's defense
+     * @param type
+     *     the mage character's type
+     * @param turnsQueue
+     *     the queue with the characters waiting for their turn
+     * @param mana
+     *     the mage character's mana
+     */
 
     public Mage(String name, int points, int defense, MageType type, @NotNull BlockingQueue<ICharacter> turnsQueue,
                 int mana){
@@ -18,10 +36,16 @@ public class Mage extends PlayerCharacter{
         this.mana = mana;
     }
 
+    /**
+     * Returns the type of this mage.
+     */
     public MageType getMageType(){
         return type;
     }
 
+    /**
+     * Returns the mana of this mage.
+     */
     public int getMana(){
         return mana;
     }

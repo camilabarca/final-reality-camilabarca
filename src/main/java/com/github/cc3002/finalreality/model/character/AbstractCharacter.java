@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * An abstract class that holds the common behaviour of all the characters in the game.
  *
  * @author Ignacio Slater Muñoz.
- * @author <Your name>
+ * @author Camila Labarca
  */
 public abstract class AbstractCharacter implements ICharacter {
 
