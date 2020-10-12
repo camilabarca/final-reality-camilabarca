@@ -12,6 +12,7 @@ public class Weapon {
 
   private final String name;
   private final int damage;
+  private final int magicdamage;
   private final int weight;
   private final WeaponType type;
 
@@ -20,10 +21,11 @@ public class Weapon {
    *
    * @see WeaponType
    */
-  public Weapon(final String name, final int damage, final int weight,
+  public Weapon(final String name, final int damage, final int magicdamage, final int weight,
       final WeaponType type) {
     this.name = name;
     this.damage = damage;
+    this.magicdamage = magicdamage;
     this.weight = weight;
     this.type = type;
   }
@@ -35,6 +37,8 @@ public class Weapon {
   private int getDamage() {
     return damage;
   }
+
+  private int getMagicdamage() {return magicdamage; }
 
   public int getWeight() {
     return weight;
@@ -53,7 +57,7 @@ public class Weapon {
       return false;
     }
     final Weapon weapon = (Weapon) o;
-    return getDamage() == weapon.getDamage() &&
+    return getDamage() == weapon.getDamage() && getMagicdamage() == weapon.getMagicdamage() &&
         getWeight() == weapon.getWeight() &&
         getName().equals(weapon.getName()) &&
         getType() == weapon.getType();
@@ -61,6 +65,6 @@ public class Weapon {
 
   @Override
   public int hashCode() {
-    return Objects.hash(getName(), getDamage(), getWeight(), getType());
+    return Objects.hash(getName(), getDamage(), getMagicdamage(), getWeight(), getType());
   }
 }

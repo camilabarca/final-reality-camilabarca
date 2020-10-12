@@ -1,6 +1,5 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +20,7 @@ public class Enemy extends AbstractCharacter {
    * Creates a new enemy with a name, a weight and the queue with the characters ready to
    * play.
    */
-  public Enemy(@NotNull final String name, final int points, final String defense, final int weight, final int damage,
+  public Enemy(@NotNull final String name, final int points, final int defense, final int weight, final int damage,
       @NotNull final BlockingQueue<ICharacter> turnsQueue) {
     super(turnsQueue, name, points, defense);
     this.weight = weight;
@@ -45,6 +44,10 @@ public class Enemy extends AbstractCharacter {
     scheduledExecutor
             .schedule(this::addToQueue, this.getWeight() / 10, TimeUnit.SECONDS);
   }
+  @Override
+  public void addToQueue(){
+    super.addToQueue();
+  }
 
   @Override
   public boolean equals(final Object o) {
@@ -55,11 +58,11 @@ public class Enemy extends AbstractCharacter {
       return false;
     }
     final Enemy enemy = (Enemy) o;
-    return getWeight() == enemy.getWeight();
+    return getWeight() == enemy.getWeight() && getDamage() == enemy.getDamage();
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getWeight());
+    return Objects.hash(getWeight(), Objects.hash(getDamage()));
   }
 }

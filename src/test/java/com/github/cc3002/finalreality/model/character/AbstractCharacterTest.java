@@ -3,8 +3,8 @@ package com.github.cc3002.finalreality.model.character;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import com.github.cc3002.finalreality.model.weapon.Weapon;
-import com.github.cc3002.finalreality.model.weapon.WeaponType;
+/*import com.github.cc3002.finalreality.model.weapon.Weapon;*/
+/*import com.github.cc3002.finalreality.model.weapon.WeaponType;*/
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -23,15 +23,13 @@ public abstract class AbstractCharacterTest {
 
   protected BlockingQueue<ICharacter> turns;
   protected List<ICharacter> testCharacters;
-  protected Weapon testWeapon;
+  /*protected Weapon testWeapon;*/
 
   /**
    * Checks that the character waits the appropriate amount of time for it's turn.
    */
   @Test
   void waitTurnTest() {
-    Assertions.assertTrue(turns.isEmpty());
-    tryToEquip(testCharacters.get(0));
     testCharacters.get(0).waitTurn();
     try {
       // Thread.sleep is not accurate so this values may be changed to adjust the
@@ -47,10 +45,6 @@ public abstract class AbstractCharacterTest {
     }
   }
 
-  private void tryToEquip(ICharacter character) {
-    character.equip(testWeapon);
-  }
-
   protected void checkConstruction(final ICharacter expectedCharacter,
       final ICharacter testEqualCharacter,
       final ICharacter sameClassDifferentCharacter,
@@ -63,7 +57,6 @@ public abstract class AbstractCharacterTest {
 
   protected void basicSetUp() {
     turns = new LinkedBlockingQueue<>();
-    testWeapon = new Weapon("Test", 15, 10, WeaponType.AXE);
     testCharacters = new ArrayList<>();
   }
 }

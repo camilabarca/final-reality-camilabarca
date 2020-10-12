@@ -1,12 +1,9 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
-import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
-import com.github.cc3002.finalreality.model.weapon.Weapon;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -18,13 +15,13 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractCharacter implements ICharacter {
 
   protected final BlockingQueue<ICharacter> turnsQueue;
-  protected final String name;
-  protected final int points;
-  protected final String defense;
-  protected final ScheduledExecutorService scheduledExecutor;
+  public final String name;
+  public int points;
+  public final int defense;
+  protected ScheduledExecutorService scheduledExecutor;
 
   protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
-      @NotNull String name, int points, String defense) {
+                              @NotNull String name, int points, int defense) {
     this.turnsQueue = turnsQueue;
     this.name = name;
     this.points = points;
@@ -40,7 +37,7 @@ public abstract class AbstractCharacter implements ICharacter {
    * Adds this character to the turns queue.
    */
   @Override
-  private void addToQueue() {
+  public void addToQueue() {
     turnsQueue.add(this);
     scheduledExecutor.shutdown();
   }
@@ -52,11 +49,12 @@ public abstract class AbstractCharacter implements ICharacter {
 
   @Override
   public int getPoints() {
-      return points;
+    return points;
   }
 
   @Override
-  public String getDefense() {
-      return defense;
+  public int getDefense() {
+    return defense;
   }
+}
 
