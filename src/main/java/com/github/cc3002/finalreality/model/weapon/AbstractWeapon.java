@@ -40,22 +40,7 @@ public abstract class AbstractWeapon {
   public int getWeight() {
     return weight;
   }
-
-
-  /*@Override
-  public boolean equals(final Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof AbstractWeapon)) {
-      return false;
-    }
-    final AbstractWeapon weapon = (AbstractWeapon) o;
-    return getDamage() == weapon.getDamage()  &&
-        getWeight() == weapon.getWeight() &&
-        getName().equals(weapon.getName());
-  }*/
-
+  
   @Override
   public int hashCode() {
     return Objects.hash(getName(), getDamage(), getWeight());
