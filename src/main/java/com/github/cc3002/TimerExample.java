@@ -1,4 +1,4 @@
-package com.github.cc3002;
+/*package com.github.cc3002;
 
 import com.github.cc3002.finalreality.model.character.ICharacter;
 import com.github.cc3002.finalreality.model.character.player.CharacterClass;
@@ -12,15 +12,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * @author Ignacio Slater Muñoz.
  */
-public class TimerExample {
+/*public class TimerExample {
 
   public static void main(String[] args) throws InterruptedException {
     BlockingQueue<ICharacter> queue = new LinkedBlockingQueue<>();
     Random rng = new Random();
     for (int i = 0; i < 10; i++) {
       // Gives a random speed to each character to generate different waiting times
-      var weapon = new Weapon("", 0, rng.nextInt(50), WeaponType.KNIFE);
-      var character = new PlayerCharacter(Integer.toString(i), queue,
+      var weapon = new Weapon("", 0, 0, rng.nextInt(50), WeaponType.KNIFE);
+      var character = new PlayerCharacter(Integer.toString(i), 10,10, queue,
           CharacterClass.THIEF);
       character.equip(weapon);
       character.waitTurn();
@@ -34,3 +34,4 @@ public class TimerExample {
     }
   }
 }
+*/

@@ -1,7 +1,8 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.CharacterClass;
-import com.github.cc3002.finalreality.model.character.player.PlayerCharacter;
+import com.github.cc3002.finalreality.model.character.player.Comunes;
+import com.github.cc3002.finalreality.model.character.player.ComunesType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,14 +13,20 @@ class EnemyTest extends AbstractCharacterTest {
   @BeforeEach
   void setUp() {
     basicSetUp();
-    testCharacters.add(new Enemy(ENEMY_NAME, 10, turns));
+    testCharacters.add(new Enemy(ENEMY_NAME, 10,10, 10, 10, turns));
   }
 
   @Test
   void constructorTest() {
-    checkConstruction(new Enemy(ENEMY_NAME, 10, turns),
-        testCharacters.get(0),
-        new Enemy(ENEMY_NAME, 11, turns),
-        new PlayerCharacter(ENEMY_NAME, turns, CharacterClass.THIEF));
+    checkConstruction(new Enemy(ENEMY_NAME, 10,10, 10, 10,turns),
+            testCharacters.get(0),
+            new Enemy(ENEMY_NAME, 11, 11,11,11,turns),
+            new Comunes(ENEMY_NAME,11, 11,  ComunesType.THIEF, turns));
+  }
+
+  @Test
+  void waitTurnTest() {
+    Assertions.assertTrue(turns.isEmpty());
+    super.waitTurnTest();
   }
 }

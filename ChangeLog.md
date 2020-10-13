@@ -3,7 +3,16 @@ ChangeLog
 
 Version 2.0
 -----------
-Write your changes in here
+
+- (RC.1) Modified tests
+- (B.8) Created interface IPlayerCharacter for methods in abstract class PlayerCharacter
+- (B.7) Changed PlayerCharacter to an abstract class
+- (B.6) Created new classes witch extend from PlayerCharacter, Mage and Comunes
+- (B.5) Modified interface ICharacter
+- (B.4) Added weight and damage with it's corresponding getters
+- (B.3) Modified wait turn in abstract character, player character and enemy
+- (B.2) Added equiped weapon and it's corresponding methods to player character
+- (B.1) Added points and defense to abstract character and deleted equipped weapon and it's corresponding methods
 
 Version 1.0
 -----------

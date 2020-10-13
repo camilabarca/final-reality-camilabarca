@@ -34,9 +34,9 @@ class WeaponTest {
   void constructorTest() {
     var expectedAxe = new Weapon(AXE_NAME, DAMAGE, SPEED, WeaponType.AXE);
     var expectedStaff = new Weapon(STAFF_NAME, DAMAGE, SPEED, WeaponType.STAFF);
-    var expectedSword = new Weapon(SWORD_NAME, DAMAGE, SPEED, WeaponType.SWORD);
+    var expectedSword = new Weapon(SWORD_NAME, DAMAGE,SPEED, WeaponType.SWORD);
     var expectedBow = new Weapon(BOW_NAME, DAMAGE, SPEED, WeaponType.BOW);
-    var expectedKnife = new Weapon(KNIFE_NAME, DAMAGE, SPEED, WeaponType.KNIFE);
+    var expectedKnife = new Weapon(KNIFE_NAME, DAMAGE,SPEED, WeaponType.KNIFE);
 
     assertEquals(expectedAxe, testAxe);
     assertEquals(expectedAxe.hashCode(), testAxe.hashCode());
