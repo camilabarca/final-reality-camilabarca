@@ -51,7 +51,10 @@ public abstract class AbstractCharacterTest {
     assertNotEquals(sameClassDifferentCharacter, testEqualCharacter);
     assertNotEquals(testEqualCharacter, differentClassCharacter);
     assertEquals(expectedCharacter.hashCode(), testEqualCharacter.hashCode());
+    assertEquals(expectedCharacter.getPoints(), testEqualCharacter.getPoints());
+    assertEquals(expectedCharacter.getDefense(), testEqualCharacter.getDefense());
   }
+
 
   protected void basicSetUp() {
     turns = new LinkedBlockingQueue<>();

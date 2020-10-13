@@ -17,4 +17,19 @@ public class Axe extends AbstractWeapon {
         super(name, damage,weight);
 
     }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Axe)) {
+            return false;
+        }
+        final Axe weapon = (Axe) o;
+        return getDamage() == weapon.getDamage()  &&
+                getWeight() == weapon.getWeight() &&
+                getName().equals(weapon.getName());
+    }
+
 }
