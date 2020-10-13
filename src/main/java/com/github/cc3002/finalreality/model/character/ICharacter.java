@@ -29,5 +29,4 @@ public interface ICharacter {
 
   String getDefense();
 
-
 }
