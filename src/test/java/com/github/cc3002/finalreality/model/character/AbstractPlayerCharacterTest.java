@@ -8,8 +8,8 @@ import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.cc3002.finalreality.model.weapon.Weapon;
-import com.github.cc3002.finalreality.model.weapon.WeaponType;
+import com.github.cc3002.finalreality.model.weapon.AbstractWeapon;
+import com.github.cc3002.finalreality.model.weapon.Axe;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 public abstract class AbstractPlayerCharacterTest extends AbstractCharacterTest {
   protected List<IPlayerCharacter> testPlayerCharacters;
-  protected Weapon testWeapon;
+  protected AbstractWeapon testWeapon;
 
   @Test
   void waitTurnTest() {
@@ -52,7 +52,7 @@ public abstract class AbstractPlayerCharacterTest extends AbstractCharacterTest 
 
   protected void basicSetUp() {
     super.basicSetUp();
-    testWeapon = new Weapon("Test", 15,10, WeaponType.AXE);
+    testWeapon = new Axe("Test", 15,10);
     testPlayerCharacters = new ArrayList<>();
 
   }
