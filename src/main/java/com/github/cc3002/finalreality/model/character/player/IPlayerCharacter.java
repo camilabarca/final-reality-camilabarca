@@ -7,17 +7,17 @@ package com.github.cc3002.finalreality.model.character.player;
  * @author Camila Labarca
  */
 
-import com.github.cc3002.finalreality.model.weapon.Weapon;
+import com.github.cc3002.finalreality.model.weapon.AbstractWeapon;
 
 public interface IPlayerCharacter {
 
     /**
      * Equips the character with a weapon.
      */
-    void equip(Weapon weapon);
+    void equip(AbstractWeapon weapon);
 
     /**
      * Returns the weapon equipped by the character.
      */
-    Weapon getEquippedWeapon();
+    AbstractWeapon getEquippedWeapon();
 }

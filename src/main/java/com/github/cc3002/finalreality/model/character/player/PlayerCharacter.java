@@ -5,7 +5,7 @@ import com.github.cc3002.finalreality.model.character.ICharacter;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-import com.github.cc3002.finalreality.model.weapon.Weapon;
+import com.github.cc3002.finalreality.model.weapon.AbstractWeapon;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class PlayerCharacter extends AbstractCharacter implements IPlayerCharacter{
 
-  private Weapon equippedWeapon = null;
+  private AbstractWeapon equippedWeapon = null;
 
   public PlayerCharacter(@NotNull String name, int points, int defense,
       @NotNull BlockingQueue<ICharacter> turnsQueue) {
@@ -24,12 +24,12 @@ public abstract class PlayerCharacter extends AbstractCharacter implements IPlay
   }
 
   @Override
-  public void equip(Weapon weapon){
+  public void equip(AbstractWeapon weapon){
     this.equippedWeapon = weapon;
   }
 
   @Override
-  public Weapon getEquippedWeapon(){
+  public AbstractWeapon getEquippedWeapon(){
     return equippedWeapon;
   }
 

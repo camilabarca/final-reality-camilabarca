@@ -4,6 +4,8 @@ ChangeLog
 Version 2.0
 -----------
 
+- (RC.2) Modified weapons tests
+- (B.9) Changed weapon to abstract class and created classes for each weapon
 - (RC.1) Modified tests
 - (B.8) Created interface IPlayerCharacter for methods in abstract class PlayerCharacter
 - (B.7) Changed PlayerCharacter to an abstract class
