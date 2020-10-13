@@ -25,6 +25,9 @@ public class Staff extends AbstractWeapon {
 
     }
 
+    /**
+     * Returns the staff's magicdamage.
+     */
     public int getMagicdamage() {
         return magicdamage;
     }

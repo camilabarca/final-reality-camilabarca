@@ -20,14 +20,23 @@ public abstract class AbstractWeapon {
     this.weight = weight;
   }
 
+  /**
+   * Returns the weapon's name.
+   */
   public String getName() {
     return name;
   }
 
+  /**
+   * Returns the weapon's damage.
+   */
   public int getDamage() {
     return damage;
   }
 
+  /**
+   * Returns the weapon's weight.
+   */
   public int getWeight() {
     return weight;
   }
