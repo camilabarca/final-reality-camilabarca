@@ -1,7 +1,13 @@
 package com.github.cc3002.finalreality.model.weapon;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+/**
+ * Set of tests for the {@code Axe} class.
+ *
+ * @author Camila Labarca
+ * @see Axe
+ */
 
 public class AxeTest extends AbstractWeaponTest {
 

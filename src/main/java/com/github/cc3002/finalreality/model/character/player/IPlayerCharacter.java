@@ -1,13 +1,14 @@
 package com.github.cc3002.finalreality.model.character.player;
 
+import com.github.cc3002.finalreality.model.weapon.AbstractWeapon;
+
 /**
  * This represents a player character from the game.
  * A character can be controlled only by the player.
  *
  * @author Camila Labarca
+ *
  */
-
-import com.github.cc3002.finalreality.model.weapon.AbstractWeapon;
 
 public interface IPlayerCharacter {
 

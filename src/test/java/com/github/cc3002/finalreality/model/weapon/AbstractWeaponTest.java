@@ -3,9 +3,13 @@ package com.github.cc3002.finalreality.model.weapon;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import com.github.cc3002.finalreality.model.character.ICharacter;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+/**
+ * Abstract class containing the common tests for all the types of weapons.
+ *
+ * @author Camila Labarca
+ */
 
 public abstract class AbstractWeaponTest {
 
