@@ -16,7 +16,19 @@ public class BowTest extends AbstractWeaponTest{
         checkConstruction(new Bow(BOW_NAME, DAMAGE, SPEED),
                 testBow,
                 new Bow(BOW_NAME, 10, 15),
-                new Axe(AXE_NAME, DAMAGE, SPEED));
+                new Axe(AXE_NAME, DAMAGE, SPEED), sameBow);
+        checkConstruction(new Bow(BOW_NAME, DAMAGE, SPEED),
+                testBow,
+                new Bow(BOW_NAME, DAMAGE, 15),
+                new Axe(AXE_NAME, DAMAGE, SPEED), sameBow);
+        checkConstruction(new Bow(BOW_NAME, DAMAGE, SPEED),
+                testBow,
+                new Bow(BOW_NAME, 10, SPEED),
+                new Axe(AXE_NAME, DAMAGE, SPEED), sameBow);
+        checkConstruction(new Bow(BOW_NAME, DAMAGE, SPEED),
+                testBow,
+                new Bow("Bow", DAMAGE, SPEED),
+                new Axe(AXE_NAME, DAMAGE, SPEED), sameBow);
     }
 }
 

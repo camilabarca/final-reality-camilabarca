@@ -43,7 +43,8 @@ public class Staff extends AbstractWeapon {
         final Staff weapon = (Staff) o;
         return getDamage() == weapon.getDamage()  &&
                 getWeight() == weapon.getWeight() &&
-                getName().equals(weapon.getName()) && getMagicdamage() == weapon.getMagicdamage();
+                getName().equals(weapon.getName()) &&
+                getMagicdamage() == weapon.getMagicdamage();
     }
 
     @Override

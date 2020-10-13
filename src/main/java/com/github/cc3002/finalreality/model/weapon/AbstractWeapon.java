@@ -42,7 +42,7 @@ public abstract class AbstractWeapon {
   }
 
 
-  @Override
+  /*@Override
   public boolean equals(final Object o) {
     if (this == o) {
       return true;
@@ -54,7 +54,7 @@ public abstract class AbstractWeapon {
     return getDamage() == weapon.getDamage()  &&
         getWeight() == weapon.getWeight() &&
         getName().equals(weapon.getName());
-  }
+  }*/
 
   @Override
   public int hashCode() {

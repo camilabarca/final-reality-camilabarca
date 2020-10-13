@@ -16,6 +16,18 @@ public class KnifeTest extends AbstractWeaponTest {
         checkConstruction(new Knife(KNIFE_NAME, DAMAGE, SPEED),
                 testKnife,
                 new Knife(KNIFE_NAME, 10, 15),
-                new Staff(STAFF_NAME, DAMAGE, SPEED, 15));
+                new Staff(STAFF_NAME, DAMAGE, SPEED, 15), sameKnife);
+        checkConstruction(new Knife(KNIFE_NAME, DAMAGE, SPEED),
+                testKnife,
+                new Knife(KNIFE_NAME, DAMAGE, 15),
+                new Staff(STAFF_NAME, DAMAGE, SPEED, 15), sameKnife);
+        checkConstruction(new Knife(KNIFE_NAME, DAMAGE, SPEED),
+                testKnife,
+                new Knife(KNIFE_NAME, 10, SPEED),
+                new Staff(STAFF_NAME, DAMAGE, SPEED, 15), sameKnife);
+        checkConstruction(new Knife(KNIFE_NAME, DAMAGE, SPEED),
+                testKnife,
+                new Knife("Knife", DAMAGE, SPEED),
+                new Staff(STAFF_NAME, DAMAGE, SPEED, 15), sameKnife);
     }
 }

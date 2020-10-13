@@ -26,6 +26,12 @@ public abstract class AbstractWeaponTest {
   public Sword testSword;
   public Bow testBow;
   public Knife testKnife;
+  public Axe sameAxe;
+  public Staff sameStaff;
+  public Sword sameSword;
+  public Bow sameBow;
+  public Knife sameKnife;
+
 
   @BeforeEach
   void setUp() {
@@ -34,33 +40,25 @@ public abstract class AbstractWeaponTest {
     testSword = new Sword(SWORD_NAME, DAMAGE, SPEED);
     testBow = new Bow(BOW_NAME, DAMAGE, SPEED);
     testKnife = new Knife(KNIFE_NAME, DAMAGE, SPEED);
+    sameAxe = testAxe;
+    sameStaff = testStaff;
+    sameSword = testSword;
+    sameBow = testBow;
+    sameKnife = testKnife;
   }
 
 
   void checkConstruction(final AbstractWeapon expectedWeapon,
                          final AbstractWeapon testEqualWeapon,
                          final AbstractWeapon sameClassDifferentWeapon,
-                         final AbstractWeapon differentClassWeapon) {
+                         final AbstractWeapon differentClassWeapon,
+                         final AbstractWeapon sameWeapon) {
 
     assertEquals(expectedWeapon, testEqualWeapon);
+    assertEquals(sameWeapon, testEqualWeapon);
     assertNotEquals(sameClassDifferentWeapon, testEqualWeapon);
     assertNotEquals(testEqualWeapon, differentClassWeapon);
     assertEquals(expectedWeapon.hashCode(), testEqualWeapon.hashCode());
-    /*var expectedAxe = new Axe(AXE_NAME, DAMAGE, SPEED);
-    var expectedStaff = new Staff(STAFF_NAME, DAMAGE, SPEED, 15);
-    var expectedSword = new Sword(SWORD_NAME, DAMAGE,SPEED);
-    var expectedBow = new Bow(BOW_NAME, DAMAGE, SPEED);
-    var expectedKnife = new Knife(KNIFE_NAME, DAMAGE,SPEED);
 
-    assertEquals(expectedAxe, testAxe);
-    assertEquals(expectedAxe.hashCode(), testAxe.hashCode());
-    assertEquals(expectedStaff, testStaff);
-    assertEquals(expectedStaff.hashCode(), testStaff.hashCode());
-    assertEquals(expectedSword, testSword);
-    assertEquals(expectedSword.hashCode(), testSword.hashCode());
-    assertEquals(expectedBow, testBow);
-    assertEquals(expectedBow.hashCode(), testBow.hashCode());
-    assertEquals(expectedKnife, testKnife);
-    assertEquals(expectedKnife.hashCode(), testKnife.hashCode());*/
   }
 }

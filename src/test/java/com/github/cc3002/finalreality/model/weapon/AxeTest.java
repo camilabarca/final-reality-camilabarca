@@ -16,6 +16,18 @@ public class AxeTest extends AbstractWeaponTest {
         checkConstruction(new Axe(AXE_NAME, DAMAGE, SPEED),
                 testAxe,
                 new Axe(AXE_NAME, 10, 15),
-                new Knife(KNIFE_NAME, DAMAGE, SPEED));
+                new Knife(KNIFE_NAME, DAMAGE, SPEED), sameAxe);
+        checkConstruction(new Axe(AXE_NAME, DAMAGE, SPEED),
+                testAxe,
+                new Axe(AXE_NAME, DAMAGE, 15),
+                new Knife(KNIFE_NAME, DAMAGE, SPEED), sameAxe);
+        checkConstruction(new Axe(AXE_NAME, DAMAGE, SPEED),
+                testAxe,
+                new Axe(AXE_NAME, 10, SPEED),
+                new Knife(KNIFE_NAME, DAMAGE, SPEED), sameAxe);
+        checkConstruction(new Axe(AXE_NAME, DAMAGE, SPEED),
+                testAxe,
+                new Axe("Axe", DAMAGE, SPEED),
+                new Knife(KNIFE_NAME, DAMAGE, SPEED), sameAxe);
     }
 }
