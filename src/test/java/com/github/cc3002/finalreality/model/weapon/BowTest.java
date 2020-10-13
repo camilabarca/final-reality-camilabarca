@@ -1,11 +1,13 @@
 package com.github.cc3002.finalreality.model.weapon;
 
-import com.github.cc3002.finalreality.model.character.player.Comunes;
-import com.github.cc3002.finalreality.model.character.player.ComunesType;
-import com.github.cc3002.finalreality.model.character.player.Mage;
-import com.github.cc3002.finalreality.model.character.player.MageType;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+/**
+ * Set of tests for the {@code Bow} class.
+ *
+ * @author Camila Labarca
+ * @see Bow
+ */
 
 public class BowTest extends AbstractWeaponTest{
 

@@ -6,6 +6,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Set of tests for the {@code Enemy} class.
+ *
+ * @author Camila Labarca
+ * @see Enemy
+ */
+
 class EnemyTest extends AbstractCharacterTest {
 
   private static final String ENEMY_NAME = "Goblin";

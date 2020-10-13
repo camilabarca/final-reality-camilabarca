@@ -2,6 +2,13 @@ package com.github.cc3002.finalreality.model.weapon;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Set of tests for the {@code Sword} class.
+ *
+ * @author Camila Labarca
+ * @see Sword
+ */
+
 public class SwordTest extends AbstractWeaponTest{
 
     @Test
