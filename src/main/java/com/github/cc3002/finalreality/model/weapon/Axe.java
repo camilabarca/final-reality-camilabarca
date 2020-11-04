@@ -1,5 +1,7 @@
 package com.github.cc3002.finalreality.model.weapon;
 
+import com.github.cc3002.finalreality.model.character.player.*;
+
 public class Axe extends AbstractWeapon {
 
     /**
@@ -32,4 +34,28 @@ public class Axe extends AbstractWeapon {
                 getName().equals(weapon.getName());
     }
 
+    @Override
+    public void equipToKnight(Knight c) {
+        c.equippedWeapon = this;
+    }
+
+    @Override
+    public void equipToEngineer(Engineer c) {
+        c.equippedWeapon = this;
+    }
+
+    @Override
+    public void equipToThief(Thief c) {
+
+    }
+
+    @Override
+    public void equipToWhiteMage(WhiteMage c) {
+
+    }
+
+    @Override
+    public void equipToBlackMage(BlackMage c) {
+
+    }
 }

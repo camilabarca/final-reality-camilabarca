@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author Ignacio Slater Muñoz.
  * @author Camila Labarca
  */
-public abstract class AbstractWeapon {
+public abstract class AbstractWeapon implements IWeapon {
 
   private final String name;
   private final int damage;
@@ -40,7 +40,7 @@ public abstract class AbstractWeapon {
   public int getWeight() {
     return weight;
   }
-  
+
   @Override
   public int hashCode() {
     return Objects.hash(getName(), getDamage(), getWeight());

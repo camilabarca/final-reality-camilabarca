@@ -2,8 +2,10 @@ package com.github.cc3002.finalreality.model.character;
 
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
 import org.jetbrains.annotations.NotNull;
 /**
  * A class that creates a single enemy of the game.
@@ -14,14 +16,14 @@ import org.jetbrains.annotations.NotNull;
 public class Enemy extends AbstractCharacter {
 
   private final int weight;
-  private final int damage;
+  public final int damage;
 
   /**
    * Creates a new enemy with a name, points, defense, a weight, damage and the queue
    * with the characters ready to play.
    */
   public Enemy(@NotNull final String name, final int points, final int defense, final int weight, final int damage,
-      @NotNull final BlockingQueue<ICharacter> turnsQueue) {
+               @NotNull final BlockingQueue<ICharacter> turnsQueue) {
     super(turnsQueue, name, points, defense);
     this.weight = weight;
     this.damage = damage;
@@ -42,14 +44,37 @@ public class Enemy extends AbstractCharacter {
   }
 
   @Override
-  public void waitTurn(){
+  public void waitTurn() {
     super.waitTurn();
     scheduledExecutor
             .schedule(this::addToQueue, this.getWeight() / 10, TimeUnit.SECONDS);
   }
+
   @Override
   public void addToQueue(){
     super.addToQueue();
+  }
+
+
+
+  @Override
+  public void attack(ICharacter c) {
+    c.attackedByEnemy(this);
+  }
+
+  @Override
+  public void attackedByEnemy(Enemy charac) {
+    this.attackedBy((charac.damage - this.defense));
+  }
+
+  @Override
+  public void attackedByPlayer(IPlayerCharacter charac) {
+    this.attackedBy((charac.getEquippedWeapon().getDamage() - this.defense));
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getWeight());
   }
 
   @Override
@@ -61,11 +86,7 @@ public class Enemy extends AbstractCharacter {
       return false;
     }
     final Enemy enemy = (Enemy) o;
-    return getWeight() == enemy.getWeight() && getDamage() == enemy.getDamage();
+    return getWeight() == enemy.getWeight();
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(getWeight(), Objects.hash(getDamage()));
-  }
 }

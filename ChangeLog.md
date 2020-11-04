@@ -4,6 +4,8 @@ ChangeLog
 Version 2.0
 -----------
 
+- (B.11) Created IWeapon interface
+- (B.10) Added attacks to characters with double dispatch
 - (RC.2) Modified weapons tests
 - (B.9) Changed weapon to abstract class and created classes for each weapon
 - (RC.1) Modified tests

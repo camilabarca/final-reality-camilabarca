@@ -1,6 +1,8 @@
 package com.github.cc3002.finalreality.model.character;
 
 
+import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
+
 /**
  * This represents a character from the game.
  * A character can be controlled by the player or by the CPU (an enemy).
@@ -35,5 +37,11 @@ public interface ICharacter {
    * Returns this character defense.
    */
   int getDefense();
+
+  void attack(ICharacter c);
+  void attackedByEnemy(Enemy charac);
+  void attackedByPlayer(IPlayerCharacter character);
+
+  boolean isAlive();
 
 }
