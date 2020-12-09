@@ -1,5 +1,7 @@
 package com.github.cc3002.finalreality.model.weapon;
 
+import com.github.cc3002.finalreality.model.character.player.*;
+
 import java.util.Objects;
 
 public class Staff extends AbstractWeapon {
@@ -50,6 +52,31 @@ public class Staff extends AbstractWeapon {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getDamage(), getWeight(), getMagicdamage());
+    }
+
+    @Override
+    public void equipToKnight(Knight c) {
+
+    }
+
+    @Override
+    public void equipToEngineer(Engineer c) {
+
+    }
+
+    @Override
+    public void equipToThief(Thief c) {
+        c.equippedWeapon = this;
+    }
+
+    @Override
+    public void equipToWhiteMage(WhiteMage c) {
+        c.equippedWeapon = this;
+    }
+
+    @Override
+    public void equipToBlackMage(BlackMage c) {
+        c.equippedWeapon = this;
     }
 }
 
