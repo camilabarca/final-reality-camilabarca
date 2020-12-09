@@ -2,7 +2,7 @@ package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.*;
 import com.github.cc3002.finalreality.model.weapon.Sword;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -44,7 +44,7 @@ class EnemyTest extends AbstractCharacterTest {
   void attackTest() {
     Knight knight = new Knight(ENEMY_NAME, 10,0, turns);
     checkAttack(enemy, knight);
-    assertEquals(10 - (enemy.getDamage() - knight.getDefense()), knight.getPoints());
+    assertEquals(0, knight.getPoints());
     assertFalse(knight.isAlive());
     assertTrue(enemy.isAlive());
   }
@@ -53,8 +53,10 @@ class EnemyTest extends AbstractCharacterTest {
   void attackedByEnemyTest() {
     Enemy enemy1 = new Enemy("enemy", 10,2,10, 20, turns);
     checkAttack(enemy1, enemy);
-    assertEquals(10 - (enemy1.getDamage() - enemy.getDefense()), enemy.getPoints());
+    assertEquals(0, enemy.getPoints());
     assertFalse(enemy.isAlive());
+    enemy.attack(enemy1);
+    assertEquals(10, enemy1.getPoints());
     assertTrue(enemy1.isAlive());
   }
 
@@ -64,7 +66,7 @@ class EnemyTest extends AbstractCharacterTest {
     Sword sword = new Sword("sword",20, 10);
     knight.equip(sword);
     checkAttack(knight, enemy);
-    assertEquals(10 - (knight.getEquippedWeapon().getDamage()- enemy.getDefense()), enemy.getPoints());
+    assertEquals(0, enemy.getPoints());
     assertFalse(enemy.isAlive());
     assertTrue(knight.isAlive());
   }

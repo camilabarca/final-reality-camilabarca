@@ -1,12 +1,13 @@
 package com.github.cc3002.finalreality.model.character;
 
 
+import java.beans.PropertyChangeEvent;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
+import com.github.cc3002.finalreality.controller.IEventHandler;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -20,12 +21,13 @@ public abstract class AbstractCharacter implements ICharacter {
   protected final BlockingQueue<ICharacter> turnsQueue;
   protected final String name;
   public int points;
-  public final int defense;
+  protected final int defense;
   protected ScheduledExecutorService scheduledExecutor;
   public boolean alive;
 
-  protected AbstractCharacter(@NotNull BlockingQueue<ICharacter> turnsQueue,
-                              @NotNull String name, int points, int defense) {
+  private IEventHandler characterOut;
+
+  protected AbstractCharacter(@NotNull String name, int points, int defense, @NotNull BlockingQueue<ICharacter> turnsQueue) {
     this.turnsQueue = turnsQueue;
     this.name = name;
     this.points = points;
@@ -84,17 +86,25 @@ public abstract class AbstractCharacter implements ICharacter {
   }
 
 
-
-
-
+  public void addListener(IEventHandler eventHandler){
+    this.characterOut = eventHandler;
+  }
 
   public void attackedBy(int damage){
     if (damage >= this.getPoints()){
+      this.setPoints(0);
       this.alive = false;
+      if (this.characterOut != null){
+        (this.characterOut).propertyChange(new PropertyChangeEvent(this, "deadCharacter",null, null));
+      }
+    }else{
+      this.setPoints(this.getPoints()-damage);
     }
-    this.setPoints(this.getPoints()-damage);
   }
 
+  /**
+   * Returns if the character is alive or not.
+   */
   public boolean isAlive(){
     return this.alive;
   }

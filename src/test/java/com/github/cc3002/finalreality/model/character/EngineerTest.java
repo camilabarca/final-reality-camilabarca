@@ -2,13 +2,18 @@ package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.Engineer;
 import com.github.cc3002.finalreality.model.character.player.Knight;
-import com.github.cc3002.finalreality.model.weapon.Axe;
 
-import com.github.cc3002.finalreality.model.weapon.Bow;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Set of tests for the {@code Engineer} class.
+ *
+ * @author Camila Labarca
+ * @see Engineer
+ */
 
 public class EngineerTest extends AbstractPlayerCharacterTest {
 
@@ -57,5 +62,13 @@ public class EngineerTest extends AbstractPlayerCharacterTest {
     @Test
     void equippedBowTest() {
         checkEquippedWeapon(vivi, bow);
+    }
+
+    @Test
+    void equipDeadEngineer(){
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        enemy.attack(vivi);
+        vivi.equip(bow);
+        assertNull(vivi.getEquippedWeapon());
     }
 }

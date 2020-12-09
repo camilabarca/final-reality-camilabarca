@@ -1,8 +1,8 @@
 package com.github.cc3002.finalreality.model.character;
 
+import java.beans.PropertyChangeSupport;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
@@ -24,7 +24,7 @@ public class Enemy extends AbstractCharacter {
    */
   public Enemy(@NotNull final String name, final int points, final int defense, final int weight, final int damage,
                @NotNull final BlockingQueue<ICharacter> turnsQueue) {
-    super(turnsQueue, name, points, defense);
+    super(name, points, defense, turnsQueue);
     this.weight = weight;
     this.damage = damage;
   }
@@ -56,10 +56,11 @@ public class Enemy extends AbstractCharacter {
   }
 
 
-
   @Override
   public void attack(ICharacter c) {
-    c.attackedByEnemy(this);
+    if (this.isAlive()){
+      c.attackedByEnemy(this);
+    }
   }
 
   @Override

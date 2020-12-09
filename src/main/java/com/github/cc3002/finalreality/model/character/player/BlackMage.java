@@ -1,7 +1,6 @@
 package com.github.cc3002.finalreality.model.character.player;
 
 import com.github.cc3002.finalreality.model.character.ICharacter;
-import com.github.cc3002.finalreality.model.weapon.AbstractWeapon;
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,22 +11,28 @@ public class BlackMage extends PlayerCharacter{
 
     protected int mana;
     /**
-     * Creates a new mage character.
+     * Creates a new BlackMage character.
      *
      * @param name       the mage character's name
      * @param points     the mage character's points
      * @param defense    the mage character's defense
      * @param turnsQueue the queue with the characters waiting for their turn
-     * @param mana
+     * @param mana       the mage character's mana
      */
     public BlackMage(String name, int points, int defense, @NotNull BlockingQueue<ICharacter> turnsQueue, int mana) {
         super(name, points, defense, turnsQueue);
         this.mana = mana;
     }
 
+    public int getMana(){
+        return mana;
+    }
+
     @Override
     public void equip(IWeapon weapon){
-        weapon.equipToBlackMage(this);
+        if(this.isAlive()){
+            weapon.equipToBlackMage(this);
+        }
     }
 
     @Override

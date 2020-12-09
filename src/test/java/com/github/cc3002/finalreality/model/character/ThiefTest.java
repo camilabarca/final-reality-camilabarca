@@ -1,19 +1,19 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.BlackMage;
-import com.github.cc3002.finalreality.model.character.player.Knight;
 import com.github.cc3002.finalreality.model.character.player.Thief;
 import com.github.cc3002.finalreality.model.character.player.WhiteMage;
-import com.github.cc3002.finalreality.model.weapon.Axe;
-import com.github.cc3002.finalreality.model.weapon.Bow;
-import com.github.cc3002.finalreality.model.weapon.Staff;
-import com.github.cc3002.finalreality.model.weapon.Sword;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+/**
+ * Set of tests for the {@code Thief} class.
+ *
+ * @author Camila Labarca
+ * @see Thief
+ */
 
 public class ThiefTest extends AbstractPlayerCharacterTest {
 
@@ -62,5 +62,13 @@ public class ThiefTest extends AbstractPlayerCharacterTest {
     @Test
     void equippedBowTest() {
         checkEquippedWeapon(vivi, bow);
+    }
+
+    @Test
+    void equipDeadThief(){
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        enemy.attack(vivi);
+        vivi.equip(sword);
+        assertNull(vivi.getEquippedWeapon());
     }
 }

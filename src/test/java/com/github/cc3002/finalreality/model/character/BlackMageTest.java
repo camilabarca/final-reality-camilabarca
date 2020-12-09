@@ -2,15 +2,18 @@ package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.BlackMage;
 import com.github.cc3002.finalreality.model.character.player.Knight;
-import com.github.cc3002.finalreality.model.character.player.Thief;
-import com.github.cc3002.finalreality.model.character.player.WhiteMage;
-import com.github.cc3002.finalreality.model.weapon.Knife;
-import com.github.cc3002.finalreality.model.weapon.Staff;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+/**
+ * Set of tests for the {@code BlackMage} class.
+ *
+ * @author Camila Labarca
+ * @see BlackMage
+ */
 
 public class BlackMageTest extends AbstractPlayerCharacterTest{
 
@@ -59,5 +62,13 @@ public class BlackMageTest extends AbstractPlayerCharacterTest{
     @Test
     void equippedBowTest() {
         checkNotEquippedWeapon(vivi, bow);
+    }
+
+    @Test
+    void equipDeadBlackMage(){
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        enemy.attack(vivi);
+        vivi.equip(staff);
+        assertNull(vivi.getEquippedWeapon());
     }
 }

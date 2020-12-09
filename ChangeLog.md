@@ -4,6 +4,10 @@ ChangeLog
 Version 2.0
 -----------
 
+- (RC.4) Game controller tests
+- (B.13) Game controller
+- (RC.3) Tests for attacks and equipment
+- (B.12) Implemented weapon's equipment with double dispatch
 - (B.11) Created IWeapon interface
 - (B.10) Added attacks to characters with double dispatch
 - (RC.2) Modified weapons tests

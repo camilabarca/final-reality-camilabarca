@@ -1,17 +1,19 @@
 package com.github.cc3002.finalreality.model.character;
 
-import com.github.cc3002.finalreality.model.character.player.BlackMage;
-import com.github.cc3002.finalreality.model.character.player.Engineer;
 import com.github.cc3002.finalreality.model.character.player.Knight;
 import com.github.cc3002.finalreality.model.character.player.Thief;
-import com.github.cc3002.finalreality.model.weapon.Axe;
-import com.github.cc3002.finalreality.model.weapon.Knife;
-import com.github.cc3002.finalreality.model.weapon.Staff;
-import com.github.cc3002.finalreality.model.weapon.Sword;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Set of tests for the {@code Knight} class.
+ *
+ * @author Camila Labarca
+ * @see Knight
+ */
 
 public class KnightTest extends AbstractPlayerCharacterTest {
 
@@ -64,13 +66,23 @@ public class KnightTest extends AbstractPlayerCharacterTest {
     }
 
     @Test
+    void equipDeadKnight(){
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        enemy.attack(vivi);
+        vivi.equip(sword);
+        assertNull(vivi.getEquippedWeapon());
+    }
+
+    @Test
     void attackTest() {
         Knight knight = new Knight("knight", 10,0, turns);
         Thief thief = new Thief("knight", 1,0, turns);
         knight.equip(sword);
         checkAttack(knight, thief);
-        assertEquals(1 - (knight.getEquippedWeapon().getDamage()- thief.getDefense()), thief.getPoints());
+        assertEquals(0, thief.getPoints());
         assertFalse(thief.isAlive());
+        thief.attack(knight);
+        assertEquals(10, knight.getPoints());
         assertTrue(knight.isAlive());
     }
 }

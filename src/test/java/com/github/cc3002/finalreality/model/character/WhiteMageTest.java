@@ -1,11 +1,18 @@
 package com.github.cc3002.finalreality.model.character;
 
 import com.github.cc3002.finalreality.model.character.player.*;
-import com.github.cc3002.finalreality.model.weapon.Staff;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Set of tests for the {@code WhiteMage} class.
+ *
+ * @author Camila Labarca
+ * @see WhiteMage
+ */
 
 public class WhiteMageTest extends AbstractPlayerCharacterTest {
 
@@ -54,5 +61,13 @@ public class WhiteMageTest extends AbstractPlayerCharacterTest {
     @Test
     void equippedBowTest() {
         checkNotEquippedWeapon(vivi, bow);
+    }
+
+    @Test
+    void equipDeadWhiteMage(){
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        enemy.attack(vivi);
+        vivi.equip(staff);
+        assertNull(vivi.getEquippedWeapon());
     }
 }

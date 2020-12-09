@@ -38,10 +38,24 @@ public interface ICharacter {
    */
   int getDefense();
 
+  /**
+   * Attacks ICharacter c.
+   */
   void attack(ICharacter c);
+
+  /**
+   * The character was attacked by an Enemy charac.
+   */
   void attackedByEnemy(Enemy charac);
+
+  /**
+   * The character was attacked by a IPlayerCharacter character.
+   */
   void attackedByPlayer(IPlayerCharacter character);
 
+  /**
+   * Returns true if the character is still alive.
+   */
   boolean isAlive();
 
 }
