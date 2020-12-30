@@ -5,6 +5,7 @@ import com.github.cc3002.finalreality.model.character.player.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
@@ -21,51 +22,67 @@ public class WhiteMageTest extends AbstractPlayerCharacterTest {
 
     @BeforeEach
     void setUp() {
-        super.basicSetUp();
-        vivi = new WhiteMage(WHITE_MAGE_NAME, 10,10,turns, 10);
+        vivi = new WhiteMage(WHITE_MAGE_NAME, 10,10, 10);
     }
 
-    @Test
-    void waitTurnTest() {
-        vivi.equip(staff);
-        checkWaitTurn(vivi);
-    }
-
+    /**
+     * Checks the construction of a white mage
+     */
     @Test
     void constructorTest() {
-        checkConstruction(new WhiteMage(WHITE_MAGE_NAME, 10, 10, turns, 10),
+        checkConstruction(new WhiteMage(WHITE_MAGE_NAME, 10, 10, 10),
                 vivi,
-                new WhiteMage("Different name",10, 10, turns, 10),
-                new Knight(WHITE_MAGE_NAME,10, 10, turns));
+                new WhiteMage("Different name",10, 10, 10),
+                new Knight(WHITE_MAGE_NAME,10, 10));
+        assertEquals(10, vivi.getMana());
     }
 
-
+    /**
+     * Checks it doesn't equip a sword
+     */
     @Test
     void equippedSwordTest() {
         checkNotEquippedWeapon(vivi, sword);
     }
+
+    /**
+     * Checks it doesn't equip an axe
+     */
     @Test
     void equippedAxeTest() {
         checkNotEquippedWeapon(vivi, axe);
     }
+
+    /**
+     * Checks it doesn't equip a knife
+     */
     @Test
     void equippedKnifeTest() {
         checkNotEquippedWeapon(vivi, knife);
     }
 
+    /**
+     * Checks it equips a staff
+     */
     @Test
     void equippedStaffTest() {
         checkEquippedWeapon(vivi, staff);
     }
 
+    /**
+     * Checks it doesn't equip a bow
+     */
     @Test
     void equippedBowTest() {
         checkNotEquippedWeapon(vivi, bow);
     }
 
+    /**
+     * Checks a dead white mage doesn't equip
+     */
     @Test
     void equipDeadWhiteMage(){
-        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20);
         enemy.attack(vivi);
         vivi.equip(staff);
         assertNull(vivi.getEquippedWeapon());

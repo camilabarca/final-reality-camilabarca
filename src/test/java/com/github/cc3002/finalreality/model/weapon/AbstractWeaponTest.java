@@ -48,11 +48,14 @@ public abstract class AbstractWeaponTest {
   }
 
 
-  void checkConstruction(final AbstractWeapon expectedWeapon,
-                         final AbstractWeapon testEqualWeapon,
-                         final AbstractWeapon sameClassDifferentWeapon,
-                         final AbstractWeapon differentClassWeapon,
-                         final AbstractWeapon sameWeapon) {
+  /**
+   * Tests the construction of a weapon
+   */
+  void checkConstruction(final IWeapon expectedWeapon,
+                         final IWeapon testEqualWeapon,
+                         final IWeapon sameClassDifferentWeapon,
+                         final IWeapon differentClassWeapon,
+                         final IWeapon sameWeapon) {
 
     assertEquals(expectedWeapon, testEqualWeapon);
     assertEquals(sameWeapon, testEqualWeapon);

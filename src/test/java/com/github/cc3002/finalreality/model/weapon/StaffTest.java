@@ -15,6 +15,9 @@ import org.junit.jupiter.api.Test;
 
 public class StaffTest extends AbstractWeaponTest{
 
+    /**
+     * Checks the construction of a staff
+     */
     @Test
     void constructorTest() {
         checkConstruction(new Staff(STAFF_NAME, DAMAGE, SPEED, 15),

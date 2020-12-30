@@ -24,15 +24,17 @@ public abstract class AbstractPlayerCharacterTest extends AbstractCharacterTest 
 
 
   /**
-   * Checks that the character equips correctly.
+   * Checks that the character equips correctly a weapon it can equip
    */
-
   protected void checkEquippedWeapon(IPlayerCharacter character, IWeapon weapon) {
     assertNull(character.getEquippedWeapon());
     character.equip(weapon);
     assertEquals(weapon, character.getEquippedWeapon());
   }
 
+  /**
+   * Checks that the character doesn't equip a weapon it can't equip
+   */
   protected void checkNotEquippedWeapon(IPlayerCharacter character, IWeapon weapon){
     assertNull(character.getEquippedWeapon());
     character.equip(weapon);

@@ -3,11 +3,10 @@ package com.github.cc3002.finalreality.model.character;
 
 import java.beans.PropertyChangeEvent;
 import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-import com.github.cc3002.finalreality.controller.IEventHandler;
+import com.github.cc3002.finalreality.controller.handlers.IEventHandler;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -18,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class AbstractCharacter implements ICharacter {
 
-  protected final BlockingQueue<ICharacter> turnsQueue;
   protected final String name;
   public int points;
   protected final int defense;
@@ -26,9 +24,10 @@ public abstract class AbstractCharacter implements ICharacter {
   public boolean alive;
 
   private IEventHandler characterOut;
+  private IEventHandler meetsTimer;
+  private IEventHandler endTurn;
 
-  protected AbstractCharacter(@NotNull String name, int points, int defense, @NotNull BlockingQueue<ICharacter> turnsQueue) {
-    this.turnsQueue = turnsQueue;
+  protected AbstractCharacter(@NotNull String name, int points, int defense) {
     this.name = name;
     this.points = points;
     this.defense = defense;
@@ -40,8 +39,10 @@ public abstract class AbstractCharacter implements ICharacter {
    */
   @Override
   public void addToQueue() {
-    turnsQueue.add(this);
     scheduledExecutor.shutdown();
+    if (meetsTimer != null){
+      meetsTimer.propertyChange(new PropertyChangeEvent(this, "Character met timer",null, null));
+    }
   }
 
   @Override
@@ -59,6 +60,9 @@ public abstract class AbstractCharacter implements ICharacter {
     return points;
   }
 
+  /**
+   * Sets the character's points.
+   */
   public void setPoints(int points){
     this.points = points;
   }
@@ -85,11 +89,25 @@ public abstract class AbstractCharacter implements ICharacter {
     return getName().equals(that.getName());
   }
 
-
+  /**
+   * Adds listener for the death of a character.
+   */
   public void addListener(IEventHandler eventHandler){
     this.characterOut = eventHandler;
   }
 
+  /**
+   * Adds listeners for when the character is added to the queue and for when the character
+   * attacks and its turn ends.
+   */
+  public void addListener1(IEventHandler timer, IEventHandler turn){
+    this.meetsTimer = timer;
+    this.endTurn = turn;
+  }
+
+  /**
+   * A character receives de damage caused by the attack of its attacker.
+   */
   public void attackedBy(int damage){
     if (damage >= this.getPoints()){
       this.setPoints(0);
@@ -99,6 +117,13 @@ public abstract class AbstractCharacter implements ICharacter {
       }
     }else{
       this.setPoints(this.getPoints()-damage);
+    }
+  }
+
+  @Override
+  public void attack(ICharacter character){
+    if (endTurn != null){
+      endTurn.propertyChange(new PropertyChangeEvent(this, "Character ended turn", null, null));
     }
   }
 

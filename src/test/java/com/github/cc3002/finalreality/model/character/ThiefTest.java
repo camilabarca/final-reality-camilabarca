@@ -22,51 +22,66 @@ public class ThiefTest extends AbstractPlayerCharacterTest {
 
     @BeforeEach
     void setUp() {
-        super.basicSetUp();
-        vivi = new Thief(THIEF_NAME, 10,10,turns);
+        vivi = new Thief(THIEF_NAME, 10,10);
     }
 
-    @Test
-    void waitTurnTest() {
-        vivi.equip(sword);
-        checkWaitTurn(vivi);
-    }
-
+    /**
+     * Checks the construction of a thief
+     */
     @Test
     void constructorTest() {
-        checkConstruction(new Thief(THIEF_NAME, 10, 10, turns),
+        checkConstruction(new Thief(THIEF_NAME, 10, 10),
                 vivi,
-                new Thief("Different name",10, 10, turns),
-                new WhiteMage(THIEF_NAME,10, 10, turns, 10));
+                new Thief("Different name",10, 10),
+                new WhiteMage(THIEF_NAME,10, 10, 10));
     }
 
-
+    /**
+     * Checks it equips a sword
+     */
     @Test
     void equippedSwordTest() {
         checkEquippedWeapon(vivi, sword);
     }
+
+    /**
+     * Checks it doesn't equip an axe
+     */
     @Test
     void equippedAxeTest() {
         checkNotEquippedWeapon(vivi, axe);
     }
+
+    /**
+     * Checks it doesn't equip a knife
+     */
     @Test
     void equippedKnifeTest() {
         checkNotEquippedWeapon(vivi, knife);
     }
 
+    /**
+     * Checks it equips a staff
+     */
     @Test
     void equippedStaffTest() {
         checkEquippedWeapon(vivi, staff);
     }
 
+    /**
+     * Checks it equips a bow
+     */
     @Test
     void equippedBowTest() {
         checkEquippedWeapon(vivi, bow);
     }
 
+    /**
+     * Checks that a dead thief doesn't equip
+     */
     @Test
     void equipDeadThief(){
-        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20, turns);
+        Enemy enemy = new Enemy("Enemy", 10, 10, 10, 20);
         enemy.attack(vivi);
         vivi.equip(sword);
         assertNull(vivi.getEquippedWeapon());
