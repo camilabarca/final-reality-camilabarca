@@ -2,6 +2,7 @@ package com.github.cc3002.finalreality.gui;
 
 import com.github.cc3002.finalreality.controller.GameController;
 import com.github.cc3002.finalreality.controller.phases.InvalidMovementException;
+import com.github.cc3002.finalreality.controller.phases.PollPhase;
 import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -19,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 import java.util.Random;
+
 
 /**
  * Main entry point for the application.
@@ -34,6 +35,8 @@ import java.util.Random;
  * label is not None you have to press the Attack button and choose an enemy to attack.
  * If once the character ends its turn the queue is empty you will have to wait and once the
  * queue gets a character you have to press next to poll the next character.
+ * At any moment of the game you can press the "Restart Game" button to start all over again,
+ * but the queue has to be full.
  *
  * @author Ignacio Slater Muñoz.
  * @author Camila Labarca
@@ -46,8 +49,6 @@ public class FinalReality extends Application {
   private Button attackPlayerButton;
   private Button next;
   private Button attackEnemy;
-
-  private Button restart;
 
   private Label players;
   private Label enemies;
@@ -66,6 +67,14 @@ public class FinalReality extends Application {
 
   @Override
   public void start(Stage primaryStage) throws FileNotFoundException {
+    startGame(primaryStage);
+
+  }
+
+  /**
+   * Initialisation of the game
+   */
+  public void startGame(Stage stage) throws FileNotFoundException {
     controller.createAxe("Axe", 5, 10);
     controller.createSword("Sword", 7, 20);
     controller.createKnife("Knife", 6, 50);
@@ -76,17 +85,17 @@ public class FinalReality extends Application {
 
     controller.createEnemy("Enemy1", 10, 1, 20, 5);
     controller.createKnight("Knight", 10, 2);
-    //controller.createEnemy("Enemy2", 10, 1, 10, 8);
-    //controller.createEngineer("Engineer", 10, 3);
-    //controller.createEnemy("Enemy3", 10, 2, 30, 5);
-    //controller.createThief("Thief", 10, 1);
-    //controller.createEnemy("Enemy4", 10, 3, 60, 7);
-    //controller.createWhiteMage("WhiteMage", 10, 4, 10);
-    //controller.createEnemy("Enemy5", 10, 4, 80, 6);
-    //controller.createBlackMage("BlackMage", 10, 4, 10);
+    controller.createEnemy("Enemy2", 10, 1, 10, 8);
+    controller.createEngineer("Engineer", 10, 3);
+    controller.createEnemy("Enemy3", 10, 2, 30, 5);
+    controller.createThief("Thief", 10, 1);
+    controller.createEnemy("Enemy4", 10, 3, 60, 7);
+    controller.createWhiteMage("WhiteMage", 10, 4, 10);
+    controller.createEnemy("Enemy5", 10, 4, 80, 6);
+    controller.createBlackMage("BlackMage", 10, 4, 10);
 
-    primaryStage.setTitle("Final Reality");
-    primaryStage.setResizable(false);
+    stage.setTitle("Final Reality");
+    stage.setResizable(false);
 
     Group root1 = new Group();
 
@@ -141,13 +150,13 @@ public class FinalReality extends Application {
     attackEnemy.setLayoutX(450);
     attackEnemy.setLayoutY(400);
 
-    //restart = new Button("Restart Game");
-    //restart.setLayoutY(400);
-    //restart.setLayoutX(250);
+    Button restartGame = new Button("Restart Game");
+    restartGame.setLayoutY(400);
+    restartGame.setLayoutX(250);
 
     startAnimator();
 
-    root1.getChildren().addAll(actualCharacter, enemies, players, turns, pollButton, points, win);
+    root1.getChildren().addAll(actualCharacter, enemies, players, turns, pollButton, points, win, restartGame);
 
     equipButton.setOnAction(event -> {root1.getChildren().removeAll(equipButton); createWeaponsButton(root1, characterImage);root1.getChildren().addAll(attackEnemy, weapon);});
 
@@ -184,10 +193,41 @@ public class FinalReality extends Application {
       }
     });
 
-    primaryStage.setScene(scene);
-    primaryStage.show();
+    restartGame.setOnAction(e -> {
+      try {
+        restart(stage);
+      } catch (FileNotFoundException fileNotFoundException) {
+        fileNotFoundException.printStackTrace();
+      }
+    });
+
+    stage.setScene(scene);
+    stage.show();
   }
 
+  /**
+   * Restarts the game
+   */
+  void restart(Stage stage) throws FileNotFoundException {
+    cleanup();
+    startGame(stage);
+  }
+
+  /**
+   * Empties all the lists and resets to the initial phase, with no actual character
+   */
+  void cleanup() {
+    controller.getParty().clear();
+    controller.getEnemies().clear();
+    controller.getTurns().clear();
+    controller.getInventory().clear();
+    controller.setPhase(new PollPhase());
+    controller.actualCharacter = null;
+  }
+
+  /**
+   * Starts animation
+   */
   private void startAnimator() {
     AnimationTimer timer = new AnimationTimer() {
       @Override
@@ -233,11 +273,9 @@ public class FinalReality extends Application {
     timer.start();
   }
 
-  private int random(){
-    Random rand = new Random();
-    return rand.nextInt(controller.getParty().size());
-  }
-
+  /**
+   * Creates a label
+   */
   private @NotNull Label createLabel(int xPos, int yPos) {
     Label label = new Label();
     label.setLayoutX(xPos);
@@ -245,6 +283,9 @@ public class FinalReality extends Application {
     return label;
   }
 
+  /**
+   * Creates a button for each of the enemies that are still alive
+   */
   private void createEnemiesButton(Group root, ImageView image){
     ArrayList<Button> buttons = new ArrayList<>();
     for (int i= 0; i<controller.getEnemies().size(); i++){
@@ -271,6 +312,9 @@ public class FinalReality extends Application {
     }
   }
 
+  /**
+   * Creates a button for each of the weapons that are on the inventory
+   */
   private void createWeaponsButton(Group root, ImageView image){
     ArrayList<Button> buttons = new ArrayList<>();
     for (int i= 0; i<controller.getInventory().size(); i++){
@@ -293,6 +337,11 @@ public class FinalReality extends Application {
       root.getChildren().add(weapon1);
       buttons.add(weapon1);
     }
+  }
+
+  public int random(){
+    Random rand = new Random();
+    return rand.nextInt(controller.getParty().size());
   }
 
 }
