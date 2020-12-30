@@ -1,6 +1,5 @@
 package com.github.cc3002.finalreality.controller.phases;
 
-import com.github.cc3002.finalreality.model.character.Enemy;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 
 
@@ -9,10 +8,8 @@ import com.github.cc3002.finalreality.model.character.ICharacter;
  * @author Camila Labarca
  */
 public class PlayEnemyPhase extends Phase{
-    private final Enemy character;
 
-    public PlayEnemyPhase(Enemy character) {
-        this.character = character;
+    public PlayEnemyPhase() {
         this.canEquip = false;
         this.canAttack = true;
     }

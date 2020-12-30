@@ -9,10 +9,8 @@ import com.github.cc3002.finalreality.model.character.player.IPlayerCharacter;
  */
 
 public class PlayCharacterPhase extends Phase{
-    private final IPlayerCharacter character;
 
-    public PlayCharacterPhase(IPlayerCharacter character) {
-        this.character = character;
+    public PlayCharacterPhase() {
         this.canEquip = true;
         this.canAttack = true;
     }

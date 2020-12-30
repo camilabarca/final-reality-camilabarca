@@ -250,7 +250,7 @@ public class GameControllerTest {
         e = assertThrows(InvalidTransitionException.class, pollPhase::toWaitQueuePhase);
         assertEquals("Can't change from Poll Phase to Wait Queue Phase", e.getMessage());
 
-        PlayEnemyPhase playEnemyPhase =  new PlayEnemyPhase(enemy);
+        PlayEnemyPhase playEnemyPhase =  new PlayEnemyPhase();
 
         e =  assertThrows(InvalidTransitionException.class, () -> playEnemyPhase.toPlayEnemyPhase(enemy));
         assertEquals("Can't change from Play Enemy Phase to Play Enemy Phase", e.getMessage());
@@ -258,7 +258,7 @@ public class GameControllerTest {
         e =  assertThrows(InvalidTransitionException.class, () -> playEnemyPhase.toPlayCharacterPhase(thief));
         assertEquals("Can't change from Play Enemy Phase to Play Character Phase", e.getMessage());
 
-        PlayCharacterPhase playCharacterPhase =  new PlayCharacterPhase(thief);
+        PlayCharacterPhase playCharacterPhase =  new PlayCharacterPhase();
 
         e =  assertThrows(InvalidTransitionException.class, () -> playCharacterPhase.toPlayCharacterPhase(thief));
         assertEquals("Can't change from Play Character Phase to Play Character Phase", e.getMessage());
@@ -296,7 +296,7 @@ public class GameControllerTest {
         e =  assertThrows(InvalidMovementException.class, () -> pollPhase.equipWeapon(thief, 0));
         assertEquals("You can't equip", e.getMessage());
 
-        PlayEnemyPhase playEnemyPhase = new PlayEnemyPhase(enemy);
+        PlayEnemyPhase playEnemyPhase = new PlayEnemyPhase();
 
         e = assertThrows(InvalidMovementException.class, playEnemyPhase::task);
         assertEquals("Can't do this task in Play Enemy Phase", e.getMessage());

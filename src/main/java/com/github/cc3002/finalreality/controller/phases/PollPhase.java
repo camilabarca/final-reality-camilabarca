@@ -11,12 +11,12 @@ public class PollPhase extends Phase{
 
     @Override
     public void toPlayCharacterPhase(IPlayerCharacter character){
-        changePhase(new PlayCharacterPhase(character));
+        changePhase(new PlayCharacterPhase());
     }
 
     @Override
     public void toPlayEnemyPhase(Enemy character){
-        changePhase(new PlayEnemyPhase(character));
+        changePhase(new PlayEnemyPhase());
     }
 
     @Override
