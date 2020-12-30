@@ -32,3 +32,4 @@
 - Si el personaje es un personaje del jugador se tiene que apretar el boton "Equip" para elegir la arma a equipar y cuando el label que dice "Actual Weapon" tiene algo distinto de "None" se apreta "Attack" para elegir a que enemigo atacar.
 - Si luego de que un personaje ataca la cola esta vacia se tiene que esperar, y una vez que la cola vuelva a tener un personaje se puede apretar "Next" para volver a sacar un personaje de la cola. Si la cola no esta vacia se volvera directamente a sacar un personaje de la cola.
 - Al ganar o perder aparecera un mensaje que lo indique.
+- En cualquier momento del juego se pueda apretar el boton "Restart Game" para comenzar el juego denuevo, pero para esto todos los personajes todavia vivos deben estar en la cola, menos el personaje que esta actualmente jugando si esque hay alguno.
