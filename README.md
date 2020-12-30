@@ -24,6 +24,7 @@
 - Luego, dependiendo de si es un jugador o un enemigo, se pasa a "Play Character Phase" o a "Play Enemy Phase". En la fase de los personajes se puede equipar un arma y atacar, pero luego de atacar se cambia inmediatamente de fase. En la fase de los enemigos solo se puede atacar y tambien se cambia de fase cuando esto ocurre.
 - Al atacar se cambia a "Poll Phase" si hay alguien en la cola y si esta esta vacia se pasa a "Wait Queue Phase".
 - En "Wait Queue Phase" solo se espera a que alguien se agregue a la cola y cuando esto ocurre se vuelve a pasar a "Poll Phase".
+
 ##Interfaz Grafica
 
 - Al comenzar en juego se parte con un boton que dice "Poll Character". Para jugar hay que apretar este boton, con el que se sacara al primer personaje de la cola.
