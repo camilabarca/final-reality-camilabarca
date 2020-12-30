@@ -195,7 +195,15 @@ public class FinalReality extends Application {
 
     restartGame.setOnAction(e -> {
       try {
-        restart(stage);
+        if (controller.getPhase().toString() == "Play Enemy Phase" ||controller.getPhase().toString() == "Play Character Phase" ){
+          if ((controller.getParty().size()+controller.getEnemies().size()) == controller.getTurns().size()+1){
+            restart(stage);
+          }
+        } else {
+          if ((controller.getParty().size()+controller.getEnemies().size()) == controller.getTurns().size()){
+            restart(stage);
+          }
+        }
       } catch (FileNotFoundException fileNotFoundException) {
         fileNotFoundException.printStackTrace();
       }
