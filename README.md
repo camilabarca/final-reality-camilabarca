@@ -13,7 +13,4 @@
 - El ataque es igual para todos los personajes, con el damage del arma, y para los enemigos con el damage de estos mismos.
 - Solo se puede atacar si estan vivos y un personaje solo puede equiparse si esta vivo.
 
-- El controlador cada vez que crea un personaje lo agrega a la lista que corresponde (enemies o party) y el handler correspondiente.
-- El controlador cada vez que crea un arma lo agrega al inventario.
-- Si un personaje se equipa la i-esima arma del inventario y logra equiparla esta se borra del inventario, y si el personaje ya tenia un arma la agrega devuelta. 
-- Si a un personaje lo atacan y le hacen mas daños que la cantidad de puntos que este tenia, muere y se le avisa el handler correspondiente.
+

@@ -22,36 +22,40 @@ class EnemyTest extends AbstractCharacterTest {
 
   @BeforeEach
   void setUp() {
-    super.basicSetUp();
-    enemy = new Enemy(ENEMY_NAME, 10,10, 10, 10, turns);
+    enemy = new Enemy(ENEMY_NAME, 10,10, 10, 10);
 
   }
 
+  /**
+   * Checks the construction of an enemy
+   */
   @Test
   void constructorTest() {
-    checkConstruction(new Enemy(ENEMY_NAME, 10, 10,10, 10, turns),
+    checkConstruction(new Enemy(ENEMY_NAME, 10, 10,10, 10),
             enemy,
-            new Enemy(ENEMY_NAME, 11,11, 11, 11, turns),
-            new Knight(ENEMY_NAME, 10,10, turns));
+            new Enemy(ENEMY_NAME, 11,11, 11, 11),
+            new Knight(ENEMY_NAME, 10,10));
+    assertEquals(10, enemy.getDamage());
   }
 
-  @Test
-  void waitTurnTest() {
-    checkWaitTurn(enemy);
-  }
-
+  /**
+   * Checks an enemy attacks correctly
+   */
   @Test
   void attackTest() {
-    Knight knight = new Knight(ENEMY_NAME, 10,0, turns);
+    Knight knight = new Knight(ENEMY_NAME, 10,0);
     checkAttack(enemy, knight);
     assertEquals(0, knight.getPoints());
     assertFalse(knight.isAlive());
     assertTrue(enemy.isAlive());
   }
 
+  /**
+   * Checks an enemy receives the attack from another enemy correctly
+   */
   @Test
   void attackedByEnemyTest() {
-    Enemy enemy1 = new Enemy("enemy", 10,2,10, 20, turns);
+    Enemy enemy1 = new Enemy("enemy", 10,2,10, 20);
     checkAttack(enemy1, enemy);
     assertEquals(0, enemy.getPoints());
     assertFalse(enemy.isAlive());
@@ -60,9 +64,12 @@ class EnemyTest extends AbstractCharacterTest {
     assertTrue(enemy1.isAlive());
   }
 
+  /**
+   * Checks an enemy receives the attack from a player correctly
+   */
   @Test
   void attackedByPlayerTest() {
-    Knight knight = new Knight(ENEMY_NAME, 10,0, turns);
+    Knight knight = new Knight(ENEMY_NAME, 10,0);
     Sword sword = new Sword("sword",20, 10);
     knight.equip(sword);
     checkAttack(knight, enemy);

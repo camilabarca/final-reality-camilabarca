@@ -5,7 +5,6 @@ import com.github.cc3002.finalreality.model.character.Enemy;
 import com.github.cc3002.finalreality.model.character.ICharacter;
 
 import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import com.github.cc3002.finalreality.model.weapon.IWeapon;
@@ -21,9 +20,8 @@ public abstract class PlayerCharacter extends AbstractCharacter implements IPlay
 
   public IWeapon equippedWeapon = null;
 
-  public PlayerCharacter(@NotNull String name, int points, int defense,
-                         @NotNull BlockingQueue<ICharacter> turnsQueue) {
-    super(name, points, defense, turnsQueue);
+  public PlayerCharacter(@NotNull String name, int points, int defense) {
+    super(name, points, defense);
   }
 
   @Override
@@ -31,11 +29,16 @@ public abstract class PlayerCharacter extends AbstractCharacter implements IPlay
     return equippedWeapon;
   }
 
+
   @Override
   public void waitTurn() {
     super.waitTurn();
     scheduledExecutor
             .schedule(this::addToQueue, equippedWeapon.getWeight() / 10, TimeUnit.SECONDS);
+  }
+  @Override
+  public void addToQueue(){
+    super.addToQueue();
   }
 
   @Override
@@ -62,6 +65,7 @@ public abstract class PlayerCharacter extends AbstractCharacter implements IPlay
 
   @Override
   public void attack(ICharacter c) {
+    super.attack(c);
     if (this.isAlive()){
       c.attackedByPlayer(this);
     }

@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 
 public class BowTest extends AbstractWeaponTest{
 
+    /**
+     * Checks the construction of a bow
+     */
     @Test
     void constructorTest() {
         checkConstruction(new Bow(BOW_NAME, DAMAGE, SPEED),

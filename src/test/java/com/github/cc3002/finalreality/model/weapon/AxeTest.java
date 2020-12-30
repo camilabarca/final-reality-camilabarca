@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
 
 public class AxeTest extends AbstractWeaponTest {
 
+    /**
+     * Checks the construction of a axe
+     */
     @Test
     void constructorTest() {
         checkConstruction(new Axe(AXE_NAME, DAMAGE, SPEED),

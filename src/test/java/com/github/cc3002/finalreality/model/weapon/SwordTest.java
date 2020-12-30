@@ -12,6 +12,9 @@ import org.junit.jupiter.api.Test;
 
 public class SwordTest extends AbstractWeaponTest{
 
+    /**
+     * Checks the construction of a sord
+     */
     @Test
     void constructorTest() {
         checkConstruction(new Sword(SWORD_NAME, DAMAGE, SPEED),

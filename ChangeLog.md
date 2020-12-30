@@ -4,6 +4,8 @@ ChangeLog
 Version 2.0
 -----------
 
+- (B.15) Gui
+- (B.14) Game controller phases
 - (RC.4) Game controller tests
 - (B.13) Game controller
 - (RC.3) Tests for attacks and equipment
